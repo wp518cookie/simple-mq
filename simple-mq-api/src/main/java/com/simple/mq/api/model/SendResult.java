@@ -9,8 +9,19 @@ import java.io.Serializable;
 
 public class SendResult implements Serializable {
     private static final long serialVersionUID = -1L;
+    public static final SendResult OK = new SendResult(true, Ack.COMMIT);
+
     private boolean sendResult;
-    private Throwable e;
+    private Ack ack;
+
+    public SendResult() {
+
+    }
+
+    public SendResult(boolean sendResult, Ack ack) {
+        this.sendResult = sendResult;
+        this.ack = ack;
+    }
 
     public boolean isSendResult() {
         return sendResult;
@@ -20,11 +31,11 @@ public class SendResult implements Serializable {
         this.sendResult = sendResult;
     }
 
-    public Throwable getE() {
-        return e;
+    public Ack getAck() {
+        return ack;
     }
 
-    public void setE(Throwable e) {
-        this.e = e;
+    public void setAck(Ack ack) {
+        this.ack = ack;
     }
 }
